@@ -1,0 +1,19 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --background-primary: #36393f;
+  --foreground-primary: #f5f5f5;
+}
+
+html {
+  color: var(--foreground-primary);
+  background-color: var(--background-primary);
+}
+
+body {
+  margin: 0;
+}
