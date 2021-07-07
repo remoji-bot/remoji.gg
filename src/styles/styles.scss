@@ -1,0 +1,209 @@
+@import "include-media";
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+
+$colors: (
+  "background": hsl(220, 8%, 23%),
+  "foreground": hsl(0, 0%, 96%),
+  "primary": hsl(330, 80%, 47%),
+  "secondary": hsl(22, 90%, 50%),
+  "danger": hsl(0, 70%, 46%),
+  "warning": hsl(51, 90%, 50%),
+  "success": hsl(130, 90%, 35%),
+  "info": hsl(200, 91%, 43%),
+);
+
+$colors_foreground: map-get($colors, "foreground");
+$colors_background: map-get($colors, "background");
+$colors_primary: map-get($colors, "primary");
+$colors_secondary: map-get($colors, "secondary");
+
+@function get_text_color($color) {
+  @if (lightness($color) > 50 or abs(hue($color) - 50) < 20) {
+    @return #050505;
+  } @else {
+    @return $colors_foreground;
+  }
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: Barlow;
+  height: 100%;
+
+  body {
+    background: linear-gradient(327deg, darken($colors_background, 20%) 0%, darken($colors_background, 5%) 100%);
+    background-attachment: fixed;
+    color: $colors_foreground;
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 100%;
+    margin: 0;
+  }
+}
+
+header {
+  background-color: darken($colors_background, 7%);
+  box-shadow: 0 0 0.25rem black;
+  position: sticky;
+  top: 0;
+
+  nav {
+    display: flex;
+    padding: 0.5rem;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    > .brand {
+      display: inline;
+      font-size: 2rem;
+    }
+
+    > ul.navbar {
+      flex-grow: 1;
+      text-align: right;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      > li {
+        display: inline;
+        padding: 0 0.25rem;
+      }
+    }
+
+    > .navend {
+      padding: 0 0.5rem;
+    }
+  }
+}
+
+main {
+  flex-grow: 1;
+  @include media(">=tablet") {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem 0;
+  }
+
+  @include media("<tablet") {
+    padding: 1rem;
+    hyphens: auto;
+  }
+}
+
+footer {
+  background-color: darken($colors_background, 7%);
+  padding: 1em;
+}
+
+a {
+  color: $colors_primary;
+  text-decoration: none;
+
+  &:hover {
+    color: $colors_secondary;
+    border-bottom-width: initial;
+  }
+
+  transition: color 0.3s, border-bottom-width 0.3s;
+}
+
+button {
+  padding: 0.5rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+
+  @each $name, $color in $colors {
+    &.#{$name} {
+      border: 1px solid $color;
+
+      &.outline {
+        background: transparent;
+        color: $color;
+
+        &:hover {
+          background: $color;
+          box-shadow: 0 0 0.25rem darken($color, 5%);
+          color: get_text_color($color);
+        }
+
+        &:active {
+          background: darken($color, 5%);
+          box-shadow: 0 0.1rem 0.2rem darken($color, 10%) inset;
+        }
+
+        transition: background 0.15s, box-shadow 0.15s, color 0.1s;
+      }
+
+      &:not(.outline) {
+        background: $color;
+        color: get_text_color($color);
+
+        &:hover {
+          background: lighten($color, 5%);
+          box-shadow: 0 0 0.25rem $color;
+        }
+
+        &:active {
+          background: darken($color, 5%);
+          box-shadow: 0 0.1rem 0.2rem darken($color, 10%) inset;
+        }
+
+        transition: background 0.15s, box-shadow 0.3s;
+      }
+    }
+  }
+}
+
+.error-page {
+  text-align: center;
+
+  h1 {
+    font-size: 4em;
+  }
+
+  button {
+    margin-top: 4em;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(calc(100% + 1rem));
+    opacity: 0;
+  }
+
+  10% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  90% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(calc(100% + 1rem));
+    opacity: 0;
+  }
+}
+
+.alert-modal {
+  position: fixed;
+  padding: 1rem;
+  right: 1rem;
+  top: 1rem;
+  background: $colors_background;
+  color: get_text_color($colors_background);
+  white-space: pre-wrap;
+  animation: slide-in 5s ease-in-out 0ms 1 forwards;
+  border-radius: 8px;
+}

@@ -1,11 +1,11 @@
 version: "2.4"
 
 services:
-  bot:
+  web:
     build: .
     restart: always
     volumes:
-      - ./_volumes/logs:/srv/web/logs
-    # env_file: .env
+      - .:/srv/web
+    env_file: .env
     ports:
-      - 8080:8080
+      - 8080:80

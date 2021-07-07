@@ -1,0 +1,7 @@
+{
+  "type": "project",
+  "license": "AGPL-3.0",
+  "require": {
+    "scssphp/scssphp": "^1.6.0"
+  }
+}
