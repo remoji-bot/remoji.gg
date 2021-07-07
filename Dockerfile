@@ -8,4 +8,7 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
 WORKDIR /srv/web
 COPY . .
+
+RUN php composer.phar install
+
 EXPOSE 80
