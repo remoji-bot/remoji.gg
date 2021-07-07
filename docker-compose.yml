@@ -6,6 +6,5 @@ services:
     restart: always
     volumes:
       - .:/srv/web
-    env_file: .env
     ports:
       - 8080:80

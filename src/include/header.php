@@ -34,11 +34,11 @@ require_once(__DIR__ . "/init.php"); ?>
     <nav>
       <a href="/" class="brand">Remoji</a>
       <ul class="navbar">
-        <li><a href="/support">Support</a></li>
-        <li><a href="/vote">Vote</a></li>
+        <li><a href="/support" target="_blank" rel="noopener noreferrer">Support</a></li>
+        <li><a href="/vote" target="_blank" rel="noopener noreferrer">Vote</a></li>
       </ul>
       <div class="navend">
-        <a href="/invite"><button class="primary">Invite</button></a>
+        <a href="/invite" target="_blank" rel="noopener noreferrer"><button class="primary">Invite</button></a>
       </div>
     </nav>
   </header>

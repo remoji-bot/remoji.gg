@@ -37,3 +37,10 @@ class Page
     return static::$description ?: "A fully-featured and easy-to-use emoji managagement Discord bot that improves productivity.";
   }
 }
+
+function die_redirect(string $url, int $status = 302) // re-die-rect
+{
+  http_response_code($status);
+  header("Location: $url");
+  die("This page has been moved to: $url");
+}

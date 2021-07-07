@@ -38,7 +38,7 @@ html {
   height: 100%;
 
   body {
-    background: linear-gradient(327deg, darken($colors_background, 20%) 0%, darken($colors_background, 5%) 100%);
+    background: linear-gradient(327deg, darken($colors_background, 12%) 0%, darken($colors_background, 5%) 100%);
     background-attachment: fixed;
     color: $colors_foreground;
     display: flex;
@@ -56,9 +56,15 @@ header {
 
   nav {
     display: flex;
-    padding: 0.5rem;
+    padding: 1rem;
     flex-flow: row nowrap;
     align-items: center;
+
+    @include media(">tablet") {
+      width: 80%;
+      margin: 0 auto;
+      padding: 0.5rem 0;
+    }
 
     > .brand {
       display: inline;
@@ -115,8 +121,14 @@ a {
   transition: color 0.3s, border-bottom-width 0.3s;
 }
 
+code {
+  color: $colors_secondary;
+  background: darken($colors_background, 12%);
+  padding: 0 0.2rem;
+}
+
 button {
-  padding: 0.5rem;
+  padding: 0.35rem 0.5rem;
   border-radius: 0.35rem;
   cursor: pointer;
 
