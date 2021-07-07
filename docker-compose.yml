@@ -4,7 +4,5 @@ services:
   web:
     build: .
     restart: always
-    volumes:
-      - .:/srv/web
     ports:
       - 8080:80
