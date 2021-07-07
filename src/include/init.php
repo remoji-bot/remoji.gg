@@ -34,7 +34,7 @@ class Page
 
   public static function getDescription(): string
   {
-    return static::$description ?: "A fully-featured and easy-to-use emoji managagement Discord bot that improves productivity.";
+    return static::$description ?: "A super-simple but super-powerful Discord emoji bot that lets you copy or upload emotes right from Discord, even on mobile!";
   }
 }
 
