@@ -13,10 +13,11 @@ require_once(__DIR__ . "/init.php"); ?>
   <link rel="stylesheet" href="/styles.css">
   <title><?= escape_html(Page::getTitle()) ?></title>
   <meta name="description" value="<?= escape_html(Page::getDescription()) ?>">
+  <link rel="shortcut icon" href="/images/Remoji-Logo.png" type="image/png">
+  <meta name="og:thumbnail" content="/images/Remoji-Logo.png">
   <meta name="keywords" value="remoji discord bot emojis emoji emotes emote stealer copy simple free">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
